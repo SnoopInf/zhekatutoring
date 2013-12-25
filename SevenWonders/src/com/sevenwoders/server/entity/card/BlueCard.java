@@ -6,12 +6,12 @@ public class BlueCard extends AbstractCard {
 	public BlueCard(String nm, int ep, int pln) {
 		super(nm, ep, pln);
 	}
-	private int Glory;
+	private int glory;
 	
 	public int getGlory() {
-		return Glory;
+		return glory;
 	}
 	public void setGlory(int glory) {
-		this.Glory = glory;
+		this.glory = glory;
 	}
 }
