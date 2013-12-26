@@ -7,5 +7,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/hamcrest-core-1.3.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/mockito-all-1.9.5.jar" sourcepath="/Users/kirilldavidenko/.m2/repository/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5-sources.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
