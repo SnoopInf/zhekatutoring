@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<cards>
+<card id = "001">
+<type>blue</type>
+<epoch>1</epoch>
+<name>str1</name>
+<costgold>1</costgold>
+<gloryamount>2</gloryamount>
+</card>
+
+<card id = "002">
+<type>blue</type>
+<epoch>1</epoch>
+<name>str2</name>
+<costgold>0</costgold>
+<gloryamount>1</gloryamount>
+</card>
+
+</cards>
