@@ -2,16 +2,19 @@ package com.sevenwonders.server.repository;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class XMLCardFactory {
 	public static void main(String argv[]) {
 	try {
-		 
 		File fXmlFile = new File("D:/workspaceE/zhekatutoringO/SevenWonders/src/com/sevenwonders/server/repository/Cards.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

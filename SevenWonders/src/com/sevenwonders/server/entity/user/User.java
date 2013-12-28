@@ -1,6 +1,6 @@
-package com.sevenwoders.server.entity.user;
+package com.sevenwonders.server.entity.user;
 
-import com.sevenwoders.server.entity.city.City;
+import com.sevenwonders.server.entity.city.City;
 
 public class User {
 

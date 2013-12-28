@@ -1,4 +1,4 @@
-package com.sevenwoders.server.entity.city;
+package com.sevenwonders.server.entity.city;
 
 public abstract class AbstractCity implements City {
 }

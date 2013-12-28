@@ -1,6 +1,6 @@
-package com.sevenwoders.client;
+package com.sevenwonders.client;
 
-import com.sevenwoders.shared.FieldVerifier;
+import com.sevenwonders.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;

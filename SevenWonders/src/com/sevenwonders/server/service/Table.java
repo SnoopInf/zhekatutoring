@@ -1,8 +1,8 @@
-package com.sevenwoders.server.service;
+package com.sevenwonders.server.service;
 
 import java.util.List;
 
-import com.sevenwoders.server.entity.user.User;
+import com.sevenwonders.server.entity.user.User;
 
 public class Table {
 	

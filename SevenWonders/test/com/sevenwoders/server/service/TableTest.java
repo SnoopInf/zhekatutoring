@@ -9,9 +9,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sevenwoders.server.entity.city.City;
-import com.sevenwoders.server.entity.user.User;
-import com.sevenwoders.server.exceptions.EpochOutOfBoundsException;
+import com.sevenwonders.server.entity.user.User;
+import com.sevenwonders.server.exceptions.EpochOutOfBoundsException;
+import com.sevenwonders.server.service.Table;
+import com.sevenwonders.server.entity.city.City;
 
 
 public class TableTest {
