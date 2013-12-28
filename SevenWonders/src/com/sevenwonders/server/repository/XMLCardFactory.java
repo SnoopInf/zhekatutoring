@@ -2,16 +2,31 @@ package com.sevenwonders.server.repository;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
-import java.io.File;
+import org.xml.sax.SAXException;
 
-public class XMLCardFactory {
-	public static void main(String argv[]) {
-	try {
-		 
+import com.sevenwoders.server.entity.card.BlueCard;
+import com.sevenwoders.server.entity.card.GameCard;
+import com.sevenwoders.server.entity.card.Resource;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class XMLCardFactory implements CardFactory {
+	  private static String cardName;
+	  private static int epoch;
+	  private static int glory;
+	  private static int goldCost;
+	  private static int players;
+	ArrayList<GameCard> cardList = new ArrayList<GameCard>();
+	
+	public ArrayList <GameCard> getCards (int playersNum) throws ParserConfigurationException, SAXException, IOException{	 
 		File fXmlFile = new File("D:/workspaceE/zhekatutoringO/SevenWonders/src/com/sevenwonders/server/repository/Cards.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -24,7 +39,9 @@ public class XMLCardFactory {
 		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 	 
 		NodeList nList = doc.getElementsByTagName("card");
-	 
+		
+		
+	
 		System.out.println("----------------------------");
 	 
 		for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -32,21 +49,24 @@ public class XMLCardFactory {
 			Node nNode = nList.item(temp);
 	 
 			System.out.println("\nCurrent Element :" + nNode.getNodeName());
-	 
+			
+			 
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 	 
 				Element eElement = (Element) nNode;
-				System.out.println("card id : "+ eElement.getAttribute("id"));
-				System.out.println("type : " + eElement.getElementsByTagName("type").item(0).getTextContent());
-				System.out.println("epoch : " + eElement.getElementsByTagName("epoch").item(0).getTextContent());
-				System.out.println("name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
-				System.out.println("cost gold : " + eElement.getElementsByTagName("costgold").item(0).getTextContent());
-				System.out.println("glory amount : " + eElement.getElementsByTagName("gloryamount").item(0).getTextContent());
+				cardName = eElement.getElementsByTagName("name").item(0).getTextContent();
+				epoch = Integer.parseInt(eElement.getElementsByTagName("epoch").item(0).getTextContent());
+				goldCost = Integer.parseInt(eElement.getElementsByTagName("costgold").item(0).getTextContent());
+				glory = Integer.parseInt(eElement.getElementsByTagName("gloryamount").item(0).getTextContent());
+				
+				BlueCard singleCard = new BlueCard(cardName , epoch , 3);
+				singleCard.setGlory(glory);
+				singleCard.setRes(Resource.Money, goldCost);
+				cardList.add(singleCard);
 	 
 			}
 		}
-	    } catch (Exception e) {
-		e.printStackTrace();
-	    }
+		return cardList;
+	   
 }
 }
