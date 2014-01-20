@@ -1,13 +1,17 @@
-package com.sevenwoders.server.service;
+package com.sevenwonders.server.service;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
 import com.sevenwonders.server.entity.user.User;
 import com.sevenwonders.server.exceptions.EpochOutOfBoundsException;
@@ -68,7 +72,18 @@ public class TableTest {
 		
 		table.setUsers(users);
 		
-		table.startGame();
+		try {
+			table.startGame();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		assertNotNull(user1.getLeftNeighbor());
 		assertNotNull(user1.getRightNeighbor());

@@ -8,12 +8,22 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.sevenwoders.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>com.sevenwonders.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/sevenwonders/greet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>tableServiceImpl</servlet-name>
+    <servlet-class>com.sevenwonders.server.TableServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>tableServiceImpl</servlet-name>
+    <url-pattern>/sevenwonders/table</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
