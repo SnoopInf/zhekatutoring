@@ -1,7 +1,7 @@
-package com.sevenwoders.server;
+package com.sevenwonders.server;
 
-import com.sevenwoders.client.GreetingService;
-import com.sevenwoders.shared.FieldVerifier;
+import com.sevenwonders.client.GreetingService;
+import com.sevenwonders.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**

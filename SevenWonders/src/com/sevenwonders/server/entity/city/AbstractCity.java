@@ -1,4 +1,4 @@
-package com.sevenwoders.server.entity.city;
+package com.sevenwonders.server.entity.city;
 
 
 import java.util.ArrayList;

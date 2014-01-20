@@ -2,12 +2,16 @@ package com.sevenwonders.server.repository;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+<<<<<<< HEAD
 import javax.xml.parsers.ParserConfigurationException;
+=======
+>>>>>>> fcd4c397a9063811264de9d5482dd04fa073a613
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+<<<<<<< HEAD
 import org.xml.sax.SAXException;
 
 import com.sevenwoders.server.entity.card.BlueCard;
@@ -34,6 +38,17 @@ public class XMLCardFactory implements CardFactory {
 	public ArrayList <GameCard> getCards (int playersNum) throws ParserConfigurationException, SAXException, IOException{	 
 		//  D:/workspaceE/zhekatutoringO/SevenWonders/src/com/sevenwonders/server/repository/
 		File fXmlFile = new File("Cards.xml");
+=======
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class XMLCardFactory {
+	public static void main(String argv[]) {
+	try {
+		File fXmlFile = new File("D:/workspaceE/zhekatutoringO/SevenWonders/src/com/sevenwonders/server/repository/Cards.xml");
+>>>>>>> fcd4c397a9063811264de9d5482dd04fa073a613
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);

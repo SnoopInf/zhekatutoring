@@ -1,8 +1,9 @@
-package com.sevenwoders.server.service;
+package com.sevenwonders.server.service;
 
 import java.io.IOException;
 import java.util.List;
 
+<<<<<<< HEAD:SevenWonders/src/com/sevenwoders/server/service/Table.java
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
@@ -10,6 +11,9 @@ import org.xml.sax.SAXException;
 import com.sevenwoders.server.entity.card.GameCard;
 import com.sevenwoders.server.entity.user.User;
 import com.sevenwonders.server.repository.XMLCardFactoryTest;
+=======
+import com.sevenwonders.server.entity.user.User;
+>>>>>>> fcd4c397a9063811264de9d5482dd04fa073a613:SevenWonders/src/com/sevenwonders/server/service/Table.java
 
 public class Table {
 	

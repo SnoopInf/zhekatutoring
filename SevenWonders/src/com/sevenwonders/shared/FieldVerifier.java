@@ -1,4 +1,4 @@
-package com.sevenwoders.shared;
+package com.sevenwonders.shared;
 
 /**
  * <p>

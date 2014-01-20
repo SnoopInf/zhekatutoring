@@ -1,4 +1,4 @@
-package com.sevenwoders.server.exceptions;
+package com.sevenwonders.server.exceptions;
 
 public class EpochOutOfBoundsException extends RuntimeException {
 

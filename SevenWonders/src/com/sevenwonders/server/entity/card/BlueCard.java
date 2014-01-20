@@ -1,4 +1,4 @@
-package com.sevenwoders.server.entity.card;
+package com.sevenwonders.server.entity.card;
 
 
 public class BlueCard extends AbstractCard {
