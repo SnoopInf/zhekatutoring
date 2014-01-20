@@ -26,8 +26,14 @@ public class XMLCardFactory implements CardFactory {
 	  private static int players;
 	ArrayList<GameCard> cardList = new ArrayList<GameCard>();
 	
+	public void TestWay(){
+		File f = new File("cards.xml");
+		System.out.println(f.getAbsolutePath());
+	}
+	
 	public ArrayList <GameCard> getCards (int playersNum) throws ParserConfigurationException, SAXException, IOException{	 
-		File fXmlFile = new File("D:/workspaceE/zhekatutoringO/SevenWonders/src/com/sevenwonders/server/repository/Cards.xml");
+		//  D:/workspaceE/zhekatutoringO/SevenWonders/src/com/sevenwonders/server/repository/
+		File fXmlFile = new File("Cards.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);

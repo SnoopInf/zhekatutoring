@@ -9,7 +9,7 @@ import org.xml.sax.SAXException;
 
 import com.sevenwoders.server.entity.card.GameCard;
 import com.sevenwoders.server.entity.user.User;
-import com.sevenwonders.server.repository.XMLCardFactory;
+import com.sevenwonders.server.repository.XMLCardFactoryTest;
 
 public class Table {
 	
@@ -36,7 +36,7 @@ public class Table {
 		
 		//take cards stack from CardFactory
 		
-		XMLCardFactory factory = new XMLCardFactory();
+		XMLCardFactoryTest factory = new XMLCardFactoryTest();
 		cards.addAll(factory.getCards(num));
 		
 		// give cards to all players to first epoch

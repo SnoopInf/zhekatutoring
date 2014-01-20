@@ -9,6 +9,7 @@ import com.sevenwoders.server.entity.card.GameCard;
 import com.sevenwoders.server.entity.card.Resource;
 
 public abstract class AbstractCity implements City {
+	
 	protected int[] wonderStages;
 	protected List<GameCard> cards;
 	protected Map<Resource , Integer> resources;
@@ -24,14 +25,21 @@ public abstract class AbstractCity implements City {
 	public void build(GameCard card){
 		
 	}
+	
 	public int getAmount (Resource res){
-		
+		return this.resources.get(res);
 	}
+	
 	public int getWarPoints(){
 		return warPointsWin - warPointsLose;
 	}
+	
 	public void setCards(List<GameCard> cards){
 		this.cards = cards;
+	}
+	
+	public void buyFrom(){
+		
 	}
 	
 }
