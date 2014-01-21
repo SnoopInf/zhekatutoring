@@ -13,6 +13,7 @@ import org.xml.sax.SAXException;
 import com.sevenwonders.server.entity.card.BlueCard;
 import com.sevenwonders.server.entity.card.Card;
 import com.sevenwonders.server.entity.card.Resource;
+import com.sevenwonders.server.exceptions.CardsGenerationException;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,11 +33,15 @@ public class XMLCardFactory implements CardFactory {
 		System.out.println(f.getAbsolutePath());
 	}
 
-	public List<Card> getCards(int playersNum) throws ParserConfigurationException, SAXException, IOException {
+	public List<Card> getCards(int playersNum) {
 		// D:/workspaceE/zhekatutoringO/SevenWonders/src/com/sevenwonders/server/repository/
+		try {
 		File fXmlFile = new File("Cards.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		DocumentBuilder dBuilder;
+
+			dBuilder = dbFactory.newDocumentBuilder();
+		
 		Document doc = dBuilder.parse(fXmlFile);
 
 		// optional, but recommended
@@ -70,6 +75,9 @@ public class XMLCardFactory implements CardFactory {
 				cardList.add(singleCard);
 
 			}
+		}
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			throw new CardsGenerationException(e.getMessage(), e);
 		}
 		return cardList;
 	}

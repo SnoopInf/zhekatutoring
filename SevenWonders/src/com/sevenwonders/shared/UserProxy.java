@@ -10,6 +10,10 @@ public class UserProxy implements Serializable {
 	private CityProxy city;
 	private List<CardProxy> cards;
 	
+	public UserProxy() {
+		
+	}
+	
 	public UserProxy(String name, CityProxy city, List<CardProxy> cards) {
 		this.name = name;
 		this.city = city;

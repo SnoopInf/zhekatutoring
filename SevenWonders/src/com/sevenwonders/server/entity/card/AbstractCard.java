@@ -32,7 +32,7 @@ public abstract class AbstractCard implements Card {
 		this.epoch = epoch;
 		this.playersNum = players;
 		this.resources = new HashMap<>();
-		this.imageUrl = "/images/cards/" + name;
+		this.imageUrl = "/images/cards/" + name + ".jpg";
 	}
 
 	// set all resources to our created card;

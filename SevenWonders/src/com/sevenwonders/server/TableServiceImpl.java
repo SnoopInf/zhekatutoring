@@ -12,6 +12,7 @@ import com.sevenwonders.server.entity.city.Alexandria;
 import com.sevenwonders.server.entity.city.City;
 import com.sevenwonders.server.entity.city.Ephesus;
 import com.sevenwonders.server.entity.city.Giza;
+import com.sevenwonders.server.entity.city.Mode;
 import com.sevenwonders.server.entity.user.User;
 import com.sevenwonders.server.service.Table;
 import com.sevenwonders.shared.CardProxy;
@@ -49,7 +50,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 		User user1 = new User();
 		user1.setName("Test");
 		
-		City user1City = new Giza();
+		City user1City = new Giza(Mode.A);
 		user1.setCity(user1City);
 		
 		Card card1 = new BlueCard("test1", 0 , 5);
@@ -64,7 +65,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 		User user2 = new User();
 		user2.setName("Test2");
 		
-		City user2City = new Alexandria();
+		City user2City = new Alexandria(Mode.A);
 		user2.setCity(user2City);
 		
 		users.add(user2);
@@ -72,7 +73,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 		User user3 = new User();
 		user3.setName("Test3");
 		
-		City user3City = new Ephesus();
+		City user3City = new Ephesus(Mode.A);
 		user3.setCity(user3City);
 		
 		users.add(user3);

@@ -2,6 +2,11 @@ package com.sevenwonders.server.entity.city;
 
 public class Giza extends AbstractCity {
 
+	public Giza(Mode mode) {
+		super(mode);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public int getWarPoints() {
 		// TODO Auto-generated method stub

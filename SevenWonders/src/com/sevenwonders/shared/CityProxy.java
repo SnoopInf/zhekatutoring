@@ -8,6 +8,10 @@ public class CityProxy implements Serializable {
 	private String name;
 	private String imageUrl;
 	
+	public CityProxy() {
+		
+	}
+	
 	public CityProxy(String name, String imageUrl) {
 		this.name = name;
 		this.imageUrl = imageUrl;

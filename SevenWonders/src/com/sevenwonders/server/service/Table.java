@@ -9,6 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import com.sevenwonders.server.entity.card.Card;
+import com.sevenwonders.server.entity.city.Mode;
 import com.sevenwonders.server.entity.user.User;
 import com.sevenwonders.server.repository.CardFactory;
 import com.sevenwonders.server.repository.XMLCardFactory;
@@ -23,31 +24,26 @@ public class Table implements Serializable {
 	private int move;
 	private List<Total> total;
 	
-	public void startGame() throws ParserConfigurationException, SAXException, IOException {
-		
-		//set Neighbors to all users
-		int num = users.size();
-		
-		users.get(0).setLeftNeighbor(users.get(num));
-		users.get(0).setRightNeighbor(users.get(1));
-		
-		for (int i = 0; i< num-1; i++){
-			users.get(i).setLeftNeighbor(users.get(i-1));
-			users.get(i).setRightNeighbor(users.get(i+1));
-		}
-		users.get(num).setLeftNeighbor(users.get(num - 1));
-		users.get(num).setRightNeighbor(users.get(0));
+	public void startGame(Mode mode) {
+		setNeighbors();
 		
 		//take cards stack from CardFactory
 		
 		CardFactory factory = new XMLCardFactory();
-		cards.addAll(factory.getCards(num));
+		cards.addAll(factory.getCards(users.size()));
 		
 		// give cards to all players to first epoch
 		
-		for (int i = 0; i < num; i++){
-			List<Card> cardsForPlayer = cards.subList(i*7, i*7-1);
-			
+		for (int i = 0; i < users.size(); i++){
+			users.get(i).setCards(cards.subList(i*7, (i+1)*7));
+		}
+	}
+
+	private void setNeighbors() {
+		int num = users.size();		
+		for (int i = 0; i < num; i++) {
+			users.get(i).setLeftNeighbor(users.get( (i + num - 1) % num));
+			users.get(i).setRightNeighbor(users.get( (i+1) % num ));
 		}
 	}
 	

@@ -17,6 +17,7 @@ import com.sevenwonders.server.entity.user.User;
 import com.sevenwonders.server.exceptions.EpochOutOfBoundsException;
 import com.sevenwonders.server.service.Table;
 import com.sevenwonders.server.entity.city.City;
+import com.sevenwonders.server.entity.city.Mode;
 
 
 public class TableTest {
@@ -72,18 +73,7 @@ public class TableTest {
 		
 		table.setUsers(users);
 		
-		try {
-			table.startGame();
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		table.startGame(Mode.A);
 		
 		assertNotNull(user1.getLeftNeighbor());
 		assertNotNull(user1.getRightNeighbor());
