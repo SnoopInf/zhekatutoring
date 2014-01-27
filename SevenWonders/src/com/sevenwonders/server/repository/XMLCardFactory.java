@@ -32,21 +32,20 @@ public class XMLCardFactory implements CardFactory {
 		System.out.println(f.getAbsolutePath());
 	}
 
-	public List<Card> getCards(int playersNum) {
+	public List<Card> getCards(int playersNum , int epoch) {
+		
 		// D:/workspaceE/zhekatutoringO/SevenWonders/src/com/sevenwonders/server/repository/
+		
 		try {
 		File fXmlFile = new File("Cards.xml");
 
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder;
 
-			dBuilder = dbFactory.newDocumentBuilder();
+		dBuilder = dbFactory.newDocumentBuilder();
 		
 		Document doc = dBuilder.parse(fXmlFile);
 
-		// optional, but recommended
-		// read this -
-		// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
 		doc.getDocumentElement().normalize();
 
 		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
@@ -71,14 +70,15 @@ public class XMLCardFactory implements CardFactory {
 				goldCost = Integer.parseInt(eElement.getElementsByTagName("costgold").item(0).getTextContent());
 				glory = Integer.parseInt(eElement.getElementsByTagName("gloryamount").item(0).getTextContent());
 
-				
+				if ((players <= playersNum)&(this.epoch == epoch)){
 				BlueCard singleCard = new BlueCard(cardName , epoch , 3);
 				singleCard.setGlory(glory);
 				singleCard.setRes(Resource.Money, goldCost);
 				cardList.add(singleCard);
-	 
+				}
 			}
 		}
+	// TODO shuffle	
 		}catch (ParserConfigurationException | SAXException | IOException e) {
 			throw new CardsGenerationException(e.getMessage(), e);
 		}

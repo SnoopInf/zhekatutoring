@@ -1,6 +1,7 @@
 package com.sevenwonders.server.service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sevenwonders.server.entity.card.Card;
@@ -13,28 +14,34 @@ import com.sevenwonders.server.repository.XMLCardFactory;
 
 public class Table implements Serializable {
 	
-	private List<Card> cards;
+	
+	private List<Card> cards; // cards of current epoch
 	private List<User> users;
 	private int epoch;
 	private int move;
+	private int turn;
 	private List<Total> total;
+	private List<Card> discardPile;
 	
-
+// set cards to all players from epoch 1
+// set neighbors
 	public void startGame(Mode mode) {
 		setNeighbors();
-		
-		//take cards stack from CardFactory
-		
 		CardFactory factory = new XMLCardFactory();
-		cards.addAll(factory.getCards(users.size()));
-		
-		// give cards to all players to first epoch
-		
+		cards.addAll(factory.getCards(users.size() ,epoch));
+		giveCards();
+		epoch = 1;
+		turn = 1;
+		turn();
+	}
+	
+//give cards to players
+	private void giveCards(){
 		for (int i = 0; i < users.size(); i++){
 			users.get(i).setCards(cards.subList(i*7, (i+1)*7));
 		}
 	}
-
+//set neighbors	
 	private void setNeighbors() {
 		int num = users.size();		
 		for (int i = 0; i < num; i++) {
@@ -45,19 +52,34 @@ public class Table implements Serializable {
 	}
 	
 	public void turn() {
-		
+		if (turn == 6){
+			war();
+			nextEpoch();
+			return;
+		}
+		turn++;
+		//TODO turn logic
 	}
 	
 	public void war() {
-		
+		// TODO get users military points and counts their difference within their neighbors
 	}
 	
 	public void nextEpoch() {
-		
+		turn = 1;
+		epoch++;
+		if (epoch == 4){
+			getResult();
+			return;
+		}
+		CardFactory factory = new XMLCardFactory();
+		cards.clear();
+		cards.addAll(factory.getCards(users.size() ,epoch));
+		giveCards();
 	}
 	
 	public void getResult() {
-		
+		// TODO count points from all users.
 	}
 
 	public List<User> getUsers() {

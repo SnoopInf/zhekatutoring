@@ -48,10 +48,9 @@ public abstract class AbstractCity implements City {
 		return warPointsWin - warPointsLose;
 	}
 	
-	public void setCards(List<Card> cards){
-		this.cards = cards;
+	public List<Card> getCards(){
+		return cards;
 	}
-	
 	
 	public void buyFrom() {
 		
