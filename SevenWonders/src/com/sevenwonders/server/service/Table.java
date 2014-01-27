@@ -1,53 +1,46 @@
 package com.sevenwonders.server.service;
 
-import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
-<<<<<<< HEAD:SevenWonders/src/com/sevenwoders/server/service/Table.java
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
-import com.sevenwoders.server.entity.card.GameCard;
-import com.sevenwoders.server.entity.user.User;
-import com.sevenwonders.server.repository.XMLCardFactoryTest;
-=======
+import com.sevenwonders.server.entity.card.Card;
+import com.sevenwonders.server.entity.city.Mode;
 import com.sevenwonders.server.entity.user.User;
->>>>>>> fcd4c397a9063811264de9d5482dd04fa073a613:SevenWonders/src/com/sevenwonders/server/service/Table.java
+import com.sevenwonders.server.repository.CardFactory;
+import com.sevenwonders.server.repository.XMLCardFactory;
 
-public class Table {
+
+
+public class Table implements Serializable {
 	
-	private List<GameCard> cards;
+	private List<Card> cards;
 	private List<User> users;
 	private int epoch;
 	private int move;
 	private List<Total> total;
 	
-	public void startGame() throws ParserConfigurationException, SAXException, IOException {
-		
-		//set Neighbors to all users
-		int num = users.size();
-		
-		users.get(0).setLeftNeighbor(users.get(num));
-		users.get(0).setRightNeighbor(users.get(1));
-		
-		for (int i = 0; i< num-1; i++){
-			users.get(i).setLeftNeighbor(users.get(i-1));
-			users.get(i).setRightNeighbor(users.get(i+1));
-		}
-		users.get(num).setLeftNeighbor(users.get(num - 1));
-		users.get(num).setRightNeighbor(users.get(0));
+
+	public void startGame(Mode mode) {
+		setNeighbors();
 		
 		//take cards stack from CardFactory
 		
-		XMLCardFactoryTest factory = new XMLCardFactoryTest();
-		cards.addAll(factory.getCards(num));
+		CardFactory factory = new XMLCardFactory();
+		cards.addAll(factory.getCards(users.size()));
 		
 		// give cards to all players to first epoch
 		
-		for (int i = 0; i < num; i++){
-			List<GameCard> cardsForPlayer = cards.subList(i*7, i*7-1);
-			
+		for (int i = 0; i < users.size(); i++){
+			users.get(i).setCards(cards.subList(i*7, (i+1)*7));
+		}
+	}
+
+	private void setNeighbors() {
+		int num = users.size();		
+		for (int i = 0; i < num; i++) {
+			users.get(i).setLeftNeighbor(users.get( (i + num - 1) % num));
+			users.get(i).setRightNeighbor(users.get( (i+1) % num ));
+
 		}
 	}
 	
