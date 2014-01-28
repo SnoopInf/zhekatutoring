@@ -40,7 +40,8 @@ public abstract class AbstractCard implements Card {
 	}
 
 	// set all resources to our created card;
-
+	
+	
 	public void setRes(Resource res, int quantity) {
 		this.resources.put(res, quantity);
 	}
@@ -48,6 +49,30 @@ public abstract class AbstractCard implements Card {
 	public Integer getResource(Resource res) {
 		return this.resources.get(res);
 	}
+	
+	public void addAll(Map map1, Map map2){
+		int var;
+		if (map1.size() == map2.size())
+		for(Object key: map1.keySet()){
+			var = (int)map1.get(key) + (int)map2.get(key);
+			map1.put(key , var ); 
+		}
+	}
+	
+	public void setBuns(SGMpoints buns , int quntity){
+		this.buns.put(buns , quntity);
+	}
+	
+	public Integer getBuns(SGMpoints buns){
+		return this.buns.get(buns);
+		
+	}
+	//TODO this is second variant for getBuns
+	// this can be global metod
+	public void getSmtng (Map buns1, Map buns2){
+		addAll(buns1 , buns2);
+	}
+	
 	
 	@Override
 	public Map<Resource, Integer> getNecessaryResources() {

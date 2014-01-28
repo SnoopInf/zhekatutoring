@@ -5,14 +5,18 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 import com.sevenwonders.server.entity.card.BlueCard;
 import com.sevenwonders.server.entity.card.Card;
 import com.sevenwonders.server.entity.card.Resource;
 import com.sevenwonders.server.exceptions.CardsGenerationException;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -82,6 +86,7 @@ public class XMLCardFactory implements CardFactory {
 		}catch (ParserConfigurationException | SAXException | IOException e) {
 			throw new CardsGenerationException(e.getMessage(), e);
 		}
+		Collections.shuffle(cardList);
 		return cardList;
 	}
 
