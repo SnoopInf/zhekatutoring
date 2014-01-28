@@ -4,13 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractCard implements Card {
+	
 	protected String name;
 	protected String prev;
 	protected String next;
 	protected String imageUrl;
 
+	protected int ID;
 	protected int epoch;
 	protected int playersNum;
+	
+	protected Map<SGMpoints , Integer> buns; 
 	protected Map<Resource, Integer> resources;
 	
 

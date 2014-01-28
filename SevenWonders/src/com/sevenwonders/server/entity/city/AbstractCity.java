@@ -2,6 +2,9 @@ package com.sevenwonders.server.entity.city;
 
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +18,6 @@ public abstract class AbstractCity implements City {
 	String name;
 	String imageUrl;
 	
-	
 	protected int[] wonderStages;
 	protected List<Card> cards;
 	protected Map<Resource, Integer> resources;
@@ -28,20 +30,26 @@ public abstract class AbstractCity implements City {
 		this.mode = mode;
 		resources = new HashMap<>();
 		cards = new ArrayList<>();
-		
+	
 	}
 	
 	public void build(Card card){
 		cards.add(card);
 		//TODO actions with resources
+
 	}
 	
 	public int getAmount (Resource res){
 		return this.resources.get(res);
 	}
 	
-	public int getWarPoints() {
+
+	public int getWarPoints(){
 		return warPointsWin - warPointsLose;
+	}
+	
+	public List<Card> getCards(){
+		return cards;
 	}
 	
 	public void buyFrom() {
