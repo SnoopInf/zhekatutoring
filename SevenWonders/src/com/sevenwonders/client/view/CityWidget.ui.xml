@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel>
+		<g:HorizontalPanel ui:field="info"></g:HorizontalPanel>
+		<g:FlowPanel ui:field="resources"></g:FlowPanel>
+		<g:FlowPanel ui:field="money"></g:FlowPanel>
+		<g:Image ui:field="wonders"></g:Image>
+	</g:HTMLPanel>
+</ui:UiBinder> 

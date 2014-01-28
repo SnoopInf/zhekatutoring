@@ -5,30 +5,20 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.sevenwonders.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/sevenwonders/greet</url-pattern>
-  </servlet-mapping>
-  
+  <!-- Servlets -->  
    <servlet>
-    <servlet-name>tableServiceImpl</servlet-name>
-    <servlet-class>com.sevenwonders.server.TableServiceImpl</servlet-class>
+    <servlet-name>gameServiceImpl</servlet-name>
+    <servlet-class>com.sevenwonders.server.GameServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>tableServiceImpl</servlet-name>
-    <url-pattern>/sevenwonders/table</url-pattern>
+    <servlet-name>gameServiceImpl</servlet-name>
+    <url-pattern>/sevenwonders/game</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>SevenWonders.html</welcome-file>
+    <welcome-file>welcome.jsp</welcome-file>
   </welcome-file-list>
 
 </web-app>

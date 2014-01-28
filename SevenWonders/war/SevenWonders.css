@@ -1,34 +1,189 @@
 /** Add css rules here for your application. */
+@CHARSET "UTF8";
 
-
-/** Example rules used by the template application (remove for your app) */
-h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 70px;
-  text-align: center;
+html {
+	height: 100%;
+	width: 100%;
 }
 
-.sendButton {
-  display: block;
-  font-size: 16pt;
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0 !important;
 }
 
-/** Most GWT widgets already have a style name defined */
-.gwt-DialogBox {
-  width: 400px;
+.mainLayout {
+	height: 100%;
+	width: 100%;
 }
 
-.dialogVPanel {
-  margin: 5px;
+.sw-giza {
+	background-image: url(/images/bg/Giza.jpg);
+	background-size: 100%;
+	background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 
-.serverResponseLabelError {
-  color: red;
+.sw-city-view.giza {
+	background-image: url(/images/cities/A/Giza.jpg);
+	background-size: contain;
+	background-repeat:no-repeat;
+	background-position:center;
 }
 
-/** Set ids using widget.getElement().setId("idOfElement") */
-#closeButton {
-  margin: 15px 6px 6px;
+.sw-city-view.ephesus {
+	background-image: url(/images/cities/A/Ephesus.jpg);
+	background-size: contain;
+	background-repeat:no-repeat;
+	background-position:center;
 }
+
+.sw-city-view.alexandria {
+	background-image: url(/images/cities/A/Alexandria.jpg);
+	background-size: contain;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.mainPanel {
+	height: 100%;
+	width: 100%;
+}
+
+.sw-cities-north .sw-city-view {
+	height: 100%;
+	width: 50%;
+	display: inline-block;
+}
+
+.sw-cities-west .sw-city-view {
+	height: 50%;
+	width:100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.sw-cities-east .sw-city-view {
+	height: 50%;
+	width:100%;
+}
+
+.sw-cities-south .sw-city-view {
+	height: 100%;
+	width:100%;
+}
+
+.sw-card-set {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sw-card {
+	height: 200px;
+	width:  150px;
+}
+
+.gwt-SplitLayoutPanel-HDragger, .gwt-SplitLayoutPanel-VDragger {
+	display: none;
+}
+
+.sw-city-wonders {
+	width: 48px;
+	height: 48px;
+}
+
+.sw-polled {
+	background-color: red;
+}
+
+/*
+
+.sw-city-view {
+	min-height: 150px;
+	min-width: 300px;
+}
+
+.infoPanel {
+	height: 10%;
+	width: 100%;
+}
+
+.cardsPanel {
+	height: 200px;
+	width: 100%;
+	position:absolute;
+	bottom: 30px;
+}
+
+
+
+
+
+.sw-city-image {
+	height: 100%;
+}
+
+
+
+.sw-cities-south {
+	width:100%;
+	position: absolute;
+	bottom: 230px;
+}
+
+.sw-cities-south .sw-city-view {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 200px;
+}
+
+.sw-cities-west {
+	height: 50%;
+	display: inline-block;
+	position: absolute;
+	left: 10px;
+}
+
+.sw-cities-west .sw-city-view {
+	height: 50%;
+}
+
+.sw-cities-east {
+	height: 50%;
+	display: inline-block;
+	position: absolute;
+	right: 10px;
+}
+
+.sw-cities-east .sw-city-view {
+	height: 50%;
+}
+
+
+.sw-cities-north {
+	height: 25%;
+	width:100%;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sw-cities-north .sw-city-view {
+	display:inline-block;
+	width: 50%;
+}
+
+
+
+.sw-cities-east .sw-city-image {
+	
+}
+
+.sw-cities-south .sw-city-view {
+	
+}
+
+
+*/
