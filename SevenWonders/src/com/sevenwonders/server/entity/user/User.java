@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.sevenwonders.server.entity.city.City;
 import com.sevenwonders.server.entity.card.Card;
+import com.sevenwonders.server.service.Table;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -16,6 +18,36 @@ public class User implements Serializable {
 	private City city;
 	private String name;
 	private List<Card> cards = new ArrayList<>();
+	private Table table;
+	private Card selectCard;
+	
+	public void action(){
+		// TODO KIR HERE I NEED SOME HELP xD
+	}
+	
+	private void sellCard(Card card){
+		// TODO set for resources!!!
+	}
+	
+	private void dropCard(Card card){
+		table.addDropedCard(card);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public City getCity() {
 		return city;

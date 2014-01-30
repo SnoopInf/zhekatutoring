@@ -35,6 +35,26 @@ public class Table implements Serializable {
 		turn();
 	}
 	
+// send cards to next player
+	
+	private void reSendCards(){
+		List<Card> temp = new ArrayList();
+		int num = users.size() ;
+		temp = users.get(0).getCards();
+		for(int i = num-1; i >= 0; i--){
+			(users.get(i).getLeftNeighbor()).setCards(users.get(i).getCards());;
+			if (i == 0){
+				(users.get(i).getLeftNeighbor()).setCards(temp);
+			}
+		}
+	}
+	
+ 
+	// add card sold or droped by players to discard pile in table
+ 	public void addDropedCard(Card card){
+		discardPile.add(card);
+	}
+	
 //give cards to players
 	private void giveCards(){
 		for (int i = 0; i < users.size(); i++){
@@ -51,7 +71,15 @@ public class Table implements Serializable {
 		}
 	}
 	
+	// turn logic
 	public void turn() {
+		// here is would be turn of each player
+		for (int i = 0; i < users.size() ; i++){
+			users.get(i).action();
+		}
+		// resend cards to neighbors
+		reSendCards();
+		// end of epoch
 		if (turn == 6){
 			war();
 			nextEpoch();
