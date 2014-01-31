@@ -4,13 +4,13 @@ package com.sevenwonders.server.entity.city;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.sevenwonders.server.entity.card.Card;
 import com.sevenwonders.server.entity.card.Resource;
+import com.sevenwonders.server.entity.card.SGMpoints;
 
 public abstract class AbstractCity implements City {
 	private static final long serialVersionUID = -200669157881713074L;
@@ -21,6 +21,7 @@ public abstract class AbstractCity implements City {
 	protected int[] wonderStages;
 	protected List<Card> cards;
 	protected Map<Resource, Integer> resources;
+	protected Map<SGMpoints , Integer>bugs;
 	protected int gloryPoints;
 	protected Mode mode;
 	protected int warPointsWin;
@@ -54,6 +55,14 @@ public abstract class AbstractCity implements City {
 	
 	public void buyFrom() {
 		
+	}
+	
+	public void setResources(Resource res , int value){
+		resources.put(res , value);
+	}
+	
+	public void setBugs(SGMpoints bugs , int value){
+		this.bugs.put(bugs, value);
 	}
 	
 }

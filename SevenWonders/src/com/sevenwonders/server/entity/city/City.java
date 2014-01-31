@@ -2,6 +2,10 @@ package com.sevenwonders.server.entity.city;
 
 import java.io.Serializable;
 
+import com.sevenwonders.server.entity.card.Card;
+import com.sevenwonders.server.entity.card.Resource;
+import com.sevenwonders.server.entity.card.SGMpoints;
+
 public interface City extends Serializable {
 
 	//?????????????????? ???? ?????????????? ????????????
@@ -15,4 +19,10 @@ public interface City extends Serializable {
 	
 	String getImageUrl();
 	String getName();
+
+	void setResources(Resource res , int value);
+	void build(Card card);
+	void setBugs(SGMpoints bugs , int value);
+	int getAmount (Resource res);
+	 
 }

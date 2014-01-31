@@ -2,9 +2,11 @@ package com.sevenwonders.server.entity.user;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.sevenwonders.server.entity.city.City;
 import com.sevenwonders.server.entity.card.Card;
+import com.sevenwonders.server.entity.card.Resource;
 import com.sevenwonders.server.service.Table;
 
 import java.io.Serializable;
@@ -20,13 +22,42 @@ public class User implements Serializable {
 	private List<Card> cards = new ArrayList<>();
 	private Table table;
 	private Card selectCard;
+	private String action;
+	
 	
 	public void action(){
+		switch (action) {
+		case "build Card" :
+			city.build(selectCard);
+			break;
+		case "sell" :
+			sellCard(selectCard);
+			break;
+		case "build wonder stage" :
+			// TODO logic
+			break;
+		}
+		
 		// TODO KIR HERE I NEED SOME HELP xD
 	}
 	
+	// void for checking is enough resources to build
+	
+	private Map<Resource , Integer> isEnough (Card card){
+		Map<Resource , Integer> need;
+		boolean isOk = true;
+		for(Resource key: card.getNecessaryResources().keySet()){
+			need.put(key, (int)card.getNecessaryResources().get(key) - (int)city.getAmount(key)) ;
+		if (need.get(key) >= 0)	 isOk = false;
+		}
+		if (!(isOk)) return need;
+		else return 0;
+		
+	}
+	
 	private void sellCard(Card card){
-		// TODO set for resources!!!
+		this.city.setResources(Resource.Money , 3);
+		dropCard(card);
 	}
 	
 	private void dropCard(Card card){
