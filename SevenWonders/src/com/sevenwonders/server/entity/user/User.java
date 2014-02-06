@@ -1,6 +1,7 @@
 package com.sevenwonders.server.entity.user;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,14 +45,14 @@ public class User implements Serializable {
 	// void for checking is enough resources to build
 	
 	private Map<Resource , Integer> isEnough (Card card){
-		Map<Resource , Integer> need;
+		Map<Resource , Integer> need = new HashMap<>();
 		boolean isOk = true;
 		for(Resource key: card.getNecessaryResources().keySet()){
 			need.put(key, (int)card.getNecessaryResources().get(key) - (int)city.getAmount(key)) ;
 		if (need.get(key) >= 0)	 isOk = false;
 		}
 		if (!(isOk)) return need;
-		else return 0;
+		else return null;
 		
 	}
 	

@@ -14,6 +14,7 @@ import com.sevenwonders.shared.UserProxy;
 public class TableConverter {
 	
 	public static TableProxy getTableProxy(Table table) {
+		if(table == null) return null;
 		List<UserProxy> users = new ArrayList<>();
 		for(User user: table.getUsers()){
 			CityProxy city = new CityProxy(user.getCity().getName(), user.getCity().getImageUrl());

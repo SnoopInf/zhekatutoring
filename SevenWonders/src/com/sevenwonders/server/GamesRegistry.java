@@ -41,14 +41,14 @@ public class GamesRegistry {
 	}
 	
 	public Table getTable(String userId) {
-		return testTable();
-		/*
+		//return testTable();
+		
 		User user = users.get(userId);
 		if(user != null) {
 			return usersToTableMap.get(user);
 		}
 		return null;
-		*/
+		
 	}
 	
 	public void registerNewGame(Table table, User user) {
@@ -64,6 +64,10 @@ public class GamesRegistry {
 	
 	public void startGame(Table table) {
 		waitingGames.remove(table);
+	}
+	
+	public User getUser(String id) {
+		return users.get(id);
 	}
 	
 	public void gameEnded(Table table) {

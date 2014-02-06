@@ -3,6 +3,8 @@ package com.sevenwonders.client.view;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -45,7 +47,15 @@ public class GamesListView extends VerticalPanel {
 			panel.add(new Button("Join Game"));	
 			add(panel);		
 		}
-		add(new Button("Create Game"));
+		Button create = new Button("Create Game");
+		create.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				///gameService.
+			}
+		});
+		add(create);
 		
 	}
 }

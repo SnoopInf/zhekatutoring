@@ -7,30 +7,29 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
+import com.sevenwonders.client.CardValidator;
 import com.sevenwonders.client.GameService;
 import com.sevenwonders.client.GameServiceAsync;
 import com.sevenwonders.client.TableView;
 import com.sevenwonders.shared.CardProxy;
+import com.sevenwonders.shared.TableProxy;
+import com.sevenwonders.shared.UserProxy;
 
 public class CardSet extends HorizontalPanel {
 	private List<CardProxy> cards = new ArrayList<CardProxy>();
-	private GameServiceAsync gameService = GWT.create(GameService.class);
-	private Timer timer;
 	private TableView table;
+	private UserProxy user;
+	private CardValidator validator;
 
 	public CardSet(TableView table) {
-		this.timer = new Timer() {
-			@Override
-			public void run() {
-				poll();
-			}
-		};
 		this.table = table;
+		this.validator = new CardValidator();
 	}
 
 	@Override
@@ -51,6 +50,14 @@ public class CardSet extends HorizontalPanel {
 		setWidth(150 * cards.size() + "px");
 	}
 
+	public UserProxy getUser() {
+		return user;
+	}
+
+	public void setUser(UserProxy user) {
+		this.user = user;
+	}
+
 	public void update() {
 		for (final CardProxy card : cards) {
 			DisclosurePanel cardWidget = new DisclosurePanel();
@@ -68,8 +75,7 @@ public class CardSet extends HorizontalPanel {
 
 				@Override
 				public void onClick(ClickEvent event) {
-					System.out.println("Clicked build " + card.getId());
-					startPolling();
+					buildCard( card );
 				}
 			});
 			Button buildWonder = new Button("Build Wonder");
@@ -77,8 +83,7 @@ public class CardSet extends HorizontalPanel {
 
 				@Override
 				public void onClick(ClickEvent event) {
-					System.out.println("Clicked build wonder " + card.getId());
-					startPolling();
+					buildWonderStage(card);
 				}
 			});
 			Button sell = new Button("Sell");
@@ -86,8 +91,7 @@ public class CardSet extends HorizontalPanel {
 
 				@Override
 				public void onClick(ClickEvent event) {
-					System.out.println("Clicked sell " + card.getId());
-					startPolling();
+					sellCard(card);
 				}
 			});
 			optionsPanel.add(build);
@@ -99,24 +103,24 @@ public class CardSet extends HorizontalPanel {
 			add(cardWidget);
 		}
 	}
-
-	public void startPolling() {
-		timer.scheduleRepeating(10000);
-
-		System.out.println("Started polling");
+	
+	private void buildCard(CardProxy card) {
+		System.out.println("Clicked build " + card.getId());
+		if(this.validator.validate(card, user.getCity())) {
+			table.buildCard(user, card);
+		} else {
+			table.openTradePopup(user, card);
+		}
 	}
-
-	public void stopPolling() {
-		timer.cancel();
-
-		System.out.println("Stopped polling");
+	
+	private void sellCard(CardProxy card) {
+		System.out.println("Clicked sell " + card.getId());
+		table.sellCard(user, card);
 	}
-
-	public void poll() {
-		// updateGameStatus
-		System.out.println("Update Game Status");
-		addStyleName("sw-polled");
-		stopPolling();
+	
+	private void buildWonderStage(CardProxy card) {
+		System.out.println("Clicked sell " + card.getId());
+		table.buildWonderStage(user, card);
 	}
 
 }
