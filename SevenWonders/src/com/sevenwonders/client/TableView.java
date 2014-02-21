@@ -58,6 +58,22 @@ public class TableView extends Composite {
 	private static final int WEST = 2;
 	private static final int EAST = 3;
 	
+	private int[][] positions = new int[][]{
+	    {} ,
+	    {SOUTH} ,
+	    {SOUTH , NORTH} ,
+	    {SOUTH , WEST , EAST} ,
+	    {SOUTH , WEST , NORTH , EAST} ,
+	    {SOUTH , WEST , NORTH , EAST , EAST} , 
+	    {SOUTH , WEST , NORTH , EAST , WEST, EAST} ,
+	    {SOUTH , WEST, NORTH , EAST , WEST , NORTH , EAST}
+	};   
+	    
+	  private int getPos (int number , int posMe , int posTarget){
+	      int pos;
+	      pos = positions[number][(number - (posMe - posTarget))%number];
+	      return pos;
+	  }
 
 
 	interface TableViewUiBinder extends UiBinder<Widget, TableView> {

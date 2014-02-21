@@ -24,6 +24,7 @@ public class User implements Serializable {
 	private Table table;
 	private Card selectCard;
 	private String action;
+	private Traders traders = new Traders();
 	
 	
 	public void action(){
@@ -44,17 +45,68 @@ public class User implements Serializable {
 	
 	// void for checking is enough resources to build
 	
-	private Map<Resource , Integer> isEnough (Card card){
-		Map<Resource , Integer> need = new HashMap<>();
-		boolean isOk = true;
-		for(Resource key: card.getNecessaryResources().keySet()){
-			need.put(key, (int)card.getNecessaryResources().get(key) - (int)city.getAmount(key)) ;
-		if (need.get(key) >= 0)	 isOk = false;
-		}
-		if (!(isOk)) return need;
-		else return null;
+	private void isEnough (Card card){
 		
+		Map<Resource , Integer> need = new HashMap<>();
+		boolean isOk = true;  
+		
+		for(Resource key: card.getNecessaryResources().keySet()){
+			
+			
+			need.put(key, (int)card.getNecessaryResources().get(key) - (int)city.getAmount(key)) ;
+			
+			
+			if ((need.get(key) > 0) && (key != Resource.Money))	 isOk = false;
+		}
+		
+		if (!(isOk)) {
+			this.traders.setListNeeded(need);
+			whoHave(this.traders.getListNeeded());	// run void to form object of users , who have needed resources	
+		}else{
+			if (need.get(Resource.Money) > 0){
+				this.action();
+			}else{
+				build();
+			}
+			
+		}
 	}
+	
+	// void where will from object with 
+	
+	private void whoHave(Map<Resource , Integer> listNeeded){
+		
+		List <User> traders = new ArrayList();
+		
+		for(Resource key : listNeeded.keySet()){
+
+			      if ( listNeeded.get( key ) != 0 )
+			      {
+
+			        for ( int i = 0; i <= table.getUsers()
+			                                   .size(); i++ )
+			        {
+			          if ( table.getUsers()
+			                    .get( i )
+			                    .getCity()
+			                    .getAmount( key ) != 0 )
+			          {
+			            traders.add( table.getUsers()
+			                              .get( i ) );
+			            // add to object needed information
+			          }
+			        }
+			        this.traders.setHave( key, traders );
+			      }
+			      traders.clear();
+			    }
+		// start UI where player can choose what and from who he will buy resources.
+		
+		// after all need to clear traders of this users for this turn
+		this.traders.clear();
+	}
+	
+	//void to sell card
 	
 	private void sellCard(Card card){
 		this.city.setResources(Resource.Money , 3);
@@ -65,7 +117,9 @@ public class User implements Serializable {
 		table.addDropedCard(card);
 	}
 	
-	
+	private void build(){
+		
+	}
 	
 	
 	

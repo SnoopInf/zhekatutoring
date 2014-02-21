@@ -28,5 +28,13 @@ MathFun math;
 		
 		assertEquals(math.fibonachi(7), 13);
 	}
+	@Test
+	public void testPositions(){
+		assertEquals(math.getPos(1, 0, 0), 1);
+		assertEquals(math.getPos(2, 0, 1), 0);
+		assertEquals(math.getPos(5, 0, 0), 1);
+		assertEquals(math.getPos(7, 3, 6), 3);
+		assertEquals(math.getPos(7, 6, 3), 2);
+	}
 
 }
